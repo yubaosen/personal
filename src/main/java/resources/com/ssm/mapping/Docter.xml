@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssm.mapper.DocterMapper">
+    <select id="selectDocterByID" parameterType="int" resultType="com.ssm.model.Docter">
+        SELECT * FROM `doctor` WHERE id = #{ID}
+    </select>
+    <!-- 为了返回list 类型而定义的returnMap -->
+    <resultMap type="com.ssm.model.Docter" id="resultListdoctor">
+        <id column="ID" property="ID" />
+        <result column="docname" property="docname" />
+        <result column="graduate" property="graduate" />
+        <result column="deadline" property="deadline" />
+        <result column="professor" property="professor" />
+        <result column="workplace" property="workplace" />
+        <result column="skill" property="skill" />
+        <result column="aptitude" property="aptitude" />
+    </resultMap>
+
+    <!-- 这个select语句对应上面的resultMap -->
+    <select id="selectDocters" resultMap="resultListdoctor">
+        select * from doctor
+    </select>
+</mapper>
+</mapper>
