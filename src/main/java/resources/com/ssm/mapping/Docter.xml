@@ -22,5 +22,26 @@
     <select id="selectDocters" resultMap="resultListdoctor">
         select * from doctor
     </select>
-</mapper>
+
+    <insert id="addDocter" parameterType="com.ssm.model.Docter" useGeneratedKeys="true" keyProperty="ID">
+        insert into doctor (docname, professor, deadline, graduate, aptitude, skill, workplace, ID)
+        values (#{docname}, #{professor}, #{deadline}, #{graduate}, #{aptitude}, #{skill}, #{workplace})
+    </insert>
+
+    <update id="updateDocter" parameterType="com.ssm.model.Docter">
+        update doctor set name = #{docname},
+        professor = #{professor},
+        deadline = #{deadline},
+        graduate = #{graduate},
+        aptitude = #{aptitude},
+        skill = #{skill},
+        workplace = #{workplace},
+        where ID = #{ID}
+    </update>
+
+    <delete id="deleteDocter" parameterType="int">
+        delete from doctor where id = #{ID}
+    </delete>
+    
+
 </mapper>
